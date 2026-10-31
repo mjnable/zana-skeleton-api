@@ -1,0 +1,4 @@
+* text=auto
+
+# The skeleton is installed with composer create-project: only the CI workflow and Git files stay out.
+/.gitattributes export-ignore

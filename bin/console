@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use App\Bootstrap;
+use Zana\Console\ConsoleKernel;
+
+$base = dirname(__DIR__);
+require $base . '/vendor/autoload.php';
+
+// runBuilder() builds the application itself, so that "check" reports a container that cannot be
+// built as findings, like any other problem.
+exit(ConsoleKernel::runBuilder(
+    Bootstrap::builder($base)
+        ->withContainerCache($base . '/var/cache/container.php')
+        ->withConfigurationCache($base . '/var/cache/config.php')
+        ->recompileStaleContainerInConsole(),
+));

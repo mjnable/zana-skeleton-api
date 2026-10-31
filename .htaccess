@@ -1,0 +1,12 @@
+# For hosting whose document root is the project folder: every request is rewritten into public/,
+# so nothing else (.env, config/, vendor/, var/) can be reached.
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+    Require all denied
+</IfModule>
