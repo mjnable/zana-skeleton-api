@@ -3,6 +3,13 @@
 All Zana packages share one version number and are released together. A release that did
 not change this project is not listed.
 
+## 2.11.0 — 2026-11-01
+
+### Changed
+
+- `AGENTS.md` for Zana 2.11, which names `make:plan`.
+- Requires the Zana packages at ^2.11.
+
 ## 2.10.0 — 2026-11-01
 
 ### Changed

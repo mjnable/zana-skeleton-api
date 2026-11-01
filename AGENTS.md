@@ -1,10 +1,10 @@
 # Instructions for AI coding agents
 
-This is a Zana 2.10 application (PHP 8.5). Zana is explicit by design: modules, services and
+This is a Zana 2.11 application (PHP 8.5). Zana is explicit by design: modules, services and
 routes are declared, and mistakes are caught at startup. Follow these rules; do not invent other
 conventions. The documentation for this version is at
-https://github.com/mjnable/zana-docs/tree/2.10, and its index for agents at
-https://raw.githubusercontent.com/mjnable/zana-docs/2.10/llms.txt.
+https://github.com/mjnable/zana-docs/tree/2.11, and its index for agents at
+https://raw.githubusercontent.com/mjnable/zana-docs/2.11/llms.txt.
 
 ## How to work
 
@@ -15,7 +15,10 @@ https://raw.githubusercontent.com/mjnable/zana-docs/2.10/llms.txt.
 3. **Reuse what exists.** Search the modules for an existing feature, contract or service first.
 4. **Plan.** Decide which module and layers the change belongs to.
    `php bin/console make:… --dry-run --format=json` lists the files a generator would write and the
-   lines it would register.
+   lines it would register. For a feature across layers, write a plan file (`"schema":
+   "zana.plan/1"`: the module, its entities, value objects, repositories and features) and show it
+   for review with `php bin/console make:plan <file> --dry-run`; it runs the same `make:` commands, all
+   or nothing.
 5. **Generate the structure** with the `make:` commands (`php bin/console list make`) rather than
    writing boilerplate by hand: they follow the conventions and register what they create. A use
    case exposed over HTTP is one command:
@@ -78,9 +81,10 @@ https://raw.githubusercontent.com/mjnable/zana-docs/2.10/llms.txt.
 | `php bin/console inspect [section] [--format=json]` | See modules, services, routes, configuration keys |
 | `php bin/console check [--format=json]` | Verify wiring, architecture, routes, migrations |
 | `php bin/console make:… [--dry-run] [--format=json]` | Generate modules, features and HTTP use cases, entities, value objects, repositories, controllers, pages, back offices |
+| `php bin/console make:plan <file> [--dry-run]` | Generate a whole feature from a plan file, all or nothing |
 | `php bin/console migrate` | Run database migrations |
 | `php bin/console doctor` | Check that a server is ready to run the application |
 | `composer test` | Run the tests |
 
-This file was written by `php bin/console make:agents` for Zana 2.10. Run it again after
+This file was written by `php bin/console make:agents` for Zana 2.11. Run it again after
 upgrading Zana (`--force` replaces it); add project-specific rules in a section of your own below.
