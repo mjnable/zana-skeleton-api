@@ -80,4 +80,13 @@ final class TokensApiTest extends ApplicationTestCase
         $response->assertHeader('Content-Type', 'application/problem+json; charset=utf-8');
         $this->assertSame(404, $response->jsonPath('status'));
     }
+
+    public function testTheConsoleRefusesInvalidUsersFieldByField(): void
+    {
+        $result = $this->console()->run('user:create not-an-address "Grace" --password=short');
+
+        $this->assertSame(1, $result->exitCode());
+        $this->assertStringContainsString('email: This value is not a valid email address.', $result->output());
+        $this->assertStringContainsString('password:', $result->output(), 'ValidationBehavior refuses the command before its handler runs');
+    }
 }

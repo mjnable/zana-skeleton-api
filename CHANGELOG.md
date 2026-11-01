@@ -3,6 +3,15 @@
 All Zana packages share one version number and are released together. A release that did
 not change this project is not listed.
 
+## 2.10.0 — 2026-11-01
+
+### Changed
+
+- `config/mediator.php` enables `ValidationBehavior`; `user:create` relies on it and shows invalid
+  input field by field (FE-53).
+- `AGENTS.md` for Zana 2.10.
+- Requires the Zana packages at ^2.10.
+
 ## 2.9.0 — 2026-11-01
 
 ### Added
