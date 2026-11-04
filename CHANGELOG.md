@@ -3,6 +3,14 @@
 All Zana packages share one version number and are released together. A release that did
 not change this project is not listed.
 
+## 2.12.0 — unreleased
+
+### Changed
+
+- The `Accounts` module runs on the DBAL connection of mj-zana/database 2.12, unchanged.
+- `AGENTS.md` for Zana 2.12.
+- Requires the Zana packages at ^2.12.
+
 ## 2.11.0 — 2026-11-01
 
 ### Changed
