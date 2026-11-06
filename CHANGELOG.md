@@ -3,6 +3,13 @@
 All Zana packages share one version number and are released together. A release that did
 not change this project is not listed.
 
+## 2.17.0 — unreleased
+
+### Changed
+
+- `AGENTS.md` for Zana 2.17.
+- Requires the Zana packages at ^2.17.
+
 ## 2.16.0 — 2026-11-06
 
 ### Changed
