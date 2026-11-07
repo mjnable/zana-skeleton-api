@@ -3,6 +3,13 @@
 All Zana packages share one version number and are released together. A release that did
 not change this project is not listed.
 
+## 2.19.2 — Unreleased
+
+### Security
+
+- `AGENTS.md` for Zana 2.19.2: templates do not escape objects, a URL from users needs its scheme checked, and
+  uploads go through `UploadedFileStore`.
+
 ## 2.19.1 — 2026-11-07
 
 ### Security
