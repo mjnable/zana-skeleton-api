@@ -1,10 +1,10 @@
 # Instructions for AI coding agents
 
-This is a Zana 2.18 application (PHP 8.5). Zana is explicit by design: modules, services and
+This is a Zana 2.19 application (PHP 8.5). Zana is explicit by design: modules, services and
 routes are declared, and mistakes are caught at startup. Follow these rules; do not invent other
 conventions. The documentation for this version is at
-https://github.com/mjnable/zana-docs/tree/2.18, and its index for agents at
-https://raw.githubusercontent.com/mjnable/zana-docs/2.18/llms.txt.
+https://github.com/mjnable/zana-docs/tree/2.19, and its index for agents at
+https://raw.githubusercontent.com/mjnable/zana-docs/2.19/llms.txt.
 
 ## How to work
 
@@ -31,7 +31,22 @@ https://raw.githubusercontent.com/mjnable/zana-docs/2.18/llms.txt.
 7. **Verify:** `php bin/console check` (add `--format=json` to read the findings; each has an id, a
    location and a hint). Fix every error before going on.
 8. **Test:** `composer test`. Add tests for what you changed.
-9. **Summarise** the files changed, the decisions taken, and the commands run with their results.
+9. **Security check,** when the change reads outside input (requests, uploads, files, webhooks,
+   imported data), deletes or writes files, starts a process, touches sign-in, permissions, secrets
+   or payments, builds SQL or HTML, or changes a dependency:
+   - Name who can reach the code, confirmed with `php bin/console inspect routes` rather than assumed,
+     and the worst outcome.
+   - Attack it: write tests with hostile input, such as another user's id, a missing or forged token,
+     `../` in a file name, markup in a text field, or an oversized or repeated request. Run them, and
+     look at what happened in the database or on disk, not only at the response.
+   - Fix the cause: accept what is known to be safe rather than refuse what is known to be bad, and
+     add a second check where the harm is serious.
+   - Keep every attack as a test, and run `composer audit` when a dependency changed.
+
+   Reasoning that the code looks safe is not a check.
+10. **Summarise** the files changed, the decisions taken, and the commands run with their results.
+    Report the security check: what you attacked, what you found, and what you did not cover. If you
+    skipped it, say why. Never call the result secure.
 
 ## Architecture
 
@@ -86,5 +101,5 @@ https://raw.githubusercontent.com/mjnable/zana-docs/2.18/llms.txt.
 | `php bin/console doctor` | Check that a server is ready to run the application |
 | `composer test` | Run the tests |
 
-This file was written by `php bin/console make:agents` for Zana 2.18. Run it again after
+This file was written by `php bin/console make:agents` for Zana 2.19. Run it again after
 upgrading Zana (`--force` replaces it); add project-specific rules in a section of your own below.
