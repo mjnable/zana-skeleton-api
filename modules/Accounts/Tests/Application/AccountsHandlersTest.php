@@ -61,6 +61,20 @@ final class AccountsHandlersTest extends TestCase
         }
     }
 
+    public function testAnUnknownAddressCostsAPasswordCheckToo(): void
+    {
+        $passwords = new PlainPasswords();
+        $issue = new IssueTokenHandler($this->users, $passwords, new FixedTokens());
+
+        try {
+            $issue(new IssueTokenCommand('nobody@example.com', 'a guess'));
+            $this->fail('An unknown address must be refused.');
+        } catch (InvalidCredentials) {
+        }
+
+        $this->assertSame(1, $passwords->verified, 'otherwise the time taken tells which accounts exist');
+    }
+
     public function testTheProfile(): void
     {
         $id = $this->create('ada@example.com');

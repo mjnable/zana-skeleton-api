@@ -37,7 +37,9 @@ final readonly class IssueTokenHandler
         } catch (DomainException) {
             $user = null;
         }
-        if ($user === null || !$this->passwords->verify($command->password, $user->passwordHash)) {
+        // A password is checked either way, so the time taken does not tell which accounts exist.
+        $valid = $this->passwords->verify($command->password, $user?->passwordHash ?? $this->dummyHash());
+        if ($user === null || !$valid) {
             throw new InvalidCredentials();
         }
 
@@ -47,5 +49,12 @@ final readonly class IssueTokenHandler
         }
 
         return $this->tokens->issue((string) $user->id());
+    }
+
+    private function dummyHash(): string
+    {
+        static $hash = null;
+
+        return $hash ??= $this->passwords->hash(bin2hex(random_bytes(16)));
     }
 }

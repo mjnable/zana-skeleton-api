@@ -11,6 +11,9 @@ use Modules\Accounts\Application\Ports\Passwords;
  */
 final class PlainPasswords implements Passwords
 {
+    /** How many passwords were checked: the cost an attacker could time. */
+    public int $verified = 0;
+
     public function hash(string $plain): string
     {
         return "hashed:{$plain}";
@@ -18,6 +21,8 @@ final class PlainPasswords implements Passwords
 
     public function verify(string $plain, string $hash): bool
     {
+        $this->verified++;
+
         return $hash === "hashed:{$plain}";
     }
 

@@ -3,6 +3,14 @@
 All Zana packages share one version number and are released together. A release that did
 not change this project is not listed.
 
+## 2.19.1 — Unreleased
+
+### Security
+
+- `IssueTokenHandler` checks a password for an unknown e-mail address too, so the time taken no longer shows which
+  accounts exist. Projects created from an earlier version have their own copy of this handler: make the same change
+  in `modules/Accounts/Application/Features/IssueToken/IssueTokenHandler.php`.
+
 ## 2.19.0 — 2026-11-07
 
 ### Changed
