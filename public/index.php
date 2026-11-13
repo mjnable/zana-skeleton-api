@@ -16,6 +16,8 @@ require $base . '/vendor/autoload.php';
 // 503.json and the reason goes to PHP's error log.
 HttpKernel::run(
     Bootstrap::builder($base)
+        // Used in production only: elsewhere the container is built on each request, so a changed constructor
+        // works at once (2.20). After a deployment, cache:warm compiles it.
         ->withContainerCache($base . '/var/cache/container.php')
         ->withConfigurationCache($base . '/var/cache/config.php'),
     __DIR__ . '/503.json',
