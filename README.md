@@ -14,10 +14,14 @@ composer serve
 `composer create-project` writes `.env` with a fresh secret, which signs the tokens. Then:
 
 ```
-curl -X POST http://localhost:8000/api/tokens -H "Content-Type: application/json" \
+curl -X POST http://127.0.0.1:8000/api/tokens -H "Content-Type: application/json" \
      -d '{"email": "you@example.com", "password": "…"}'
-curl http://localhost:8000/api/me -H "Authorization: Bearer <token>"
+curl http://127.0.0.1:8000/api/me -H "Authorization: Bearer <token>"
 ```
+
+`composer serve` runs until you stop it, on 127.0.0.1 so that it answers on IPv4 everywhere, and on port 8000; the
+website skeleton uses 8080, so the two can run side by side. "Address already in use" means another server holds the
+port: stop it, or run `php -S 127.0.0.1:8001 -t public` instead.
 
 ## What is where
 

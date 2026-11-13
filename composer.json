@@ -47,7 +47,10 @@
         "post-create-project-cmd": [
             "@php -r \"file_exists('.env') || file_put_contents('.env', str_replace('APP_SECURITY__SECRET=', 'APP_SECURITY__SECRET=' . bin2hex(random_bytes(32)), file_get_contents('.env.example')));\""
         ],
-        "serve": "@php -S localhost:8000 -t public",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php -S 127.0.0.1:8000 -t public"
+        ],
         "test": "phpunit"
     },
     "config": {
