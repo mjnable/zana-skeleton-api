@@ -10,6 +10,9 @@ not change this project is not listed.
 - `composer serve` keeps running past Composer's 300-second limit, and listens on `127.0.0.1:8000`, which answers on IPv4
   everywhere and leaves 8080 to the website skeleton, so the two run side by side (FE-71). `app.url` follows.
 - The container cache line says that it is used in production only (FE-70).
+- CI runs `check` on a migrated SQLite file in the runner's temporary folder, not on the tests' database in memory,
+  which every command starts empty: the run warned "Migration … has not run" each time (FE-69). Without the
+  migrate step, `check` still reports the missing tables.
 
 ## 2.19.2 — 2026-11-07
 

@@ -18,4 +18,12 @@ jobs:
       - run: git config --global user.name CI && git config --global user.email ci@example.com
       - run: vendor/bin/phpunit
       # Wiring, architecture rules, routes and migrations, in the testing environment (no .env needed).
-      - run: APP_ENV=testing php bin/console check
+      # The tests use a database in memory, which every command starts empty, so check would see no table.
+      # It checks a migrated file instead: the schema the application will have.
+      - name: check, on a migrated database
+        env:
+          APP_ENV: testing
+          APP_DATABASE__CONNECTIONS__MAIN__DATABASE: ${{ runner.temp }}/ci.sqlite
+        run: |
+          php bin/console migrate
+          php bin/console check
