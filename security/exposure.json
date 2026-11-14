@@ -1,5 +1,5 @@
 {
-    "about": "Who may reach each route. Written by php bin/console security:exposure: review each change in the diff, then commit it. check reports a route that is new, or whose access changed, until this file is written again.",
+    "about": "Who may reach each route, as reviewed. Do not edit it: php bin/console security:exposure shows what changed, and --update records it once reviewed. check reports every route that differs from it.",
     "format": 1,
     "routes": {
         "GET /api/me": {"access": "user"},
