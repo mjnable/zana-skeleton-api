@@ -7,6 +7,9 @@ not change this project is not listed.
 
 ### Changed
 
+- `AGENTS.md` for Zana 2.20: users' URLs through `safe_url()`, forms through `only()`, and request input
+  in queries through the allow-list methods.
+- Requires the Zana packages at ^2.20.
 - `composer serve` keeps running past Composer's 300-second limit, and listens on `127.0.0.1:8000`, which answers on IPv4
   everywhere and leaves 8080 to the website skeleton, so the two run side by side (FE-71). `app.url` follows.
 - The container cache line says that it is used in production only (FE-70).
