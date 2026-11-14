@@ -1,0 +1,8 @@
+{
+    "about": "Who may reach each route. Written by php bin/console security:exposure: review each change in the diff, then commit it. check reports a route that is new, or whose access changed, until this file is written again.",
+    "format": 1,
+    "routes": {
+        "GET /api/me": {"access": "user"},
+        "POST /api/tokens": {"access": "public", "reason": "Signing in: anyone may ask for a token with an e-mail address and a password"}
+    }
+}
