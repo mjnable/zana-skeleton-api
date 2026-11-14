@@ -8,7 +8,8 @@ not change this project is not listed.
 ### Added
 
 - `tests/SecurityTest.php` attacks every route in memory with `assertRoutesWithstandAttacks()` (mj-zana/testing 2.22,
-  FE-68): a new route is attacked as soon as it exists, and CI fails when one does not withstand it.
+  FE-68): a new route is attacked as soon as it exists, and CI fails when one does not withstand it. It signs in a
+  user without roles with a token from `POST /api/tokens`, so the routes that need a user are attacked as well.
 
 ## 2.21.0 — 2026-11-14
 
