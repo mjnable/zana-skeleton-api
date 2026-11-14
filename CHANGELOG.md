@@ -3,6 +3,13 @@
 All Zana packages share one version number and are released together. A release that did
 not change this project is not listed.
 
+## 2.22.0 — Unreleased
+
+### Added
+
+- `tests/SecurityTest.php` attacks every route in memory with `assertRoutesWithstandAttacks()` (mj-zana/testing 2.22,
+  FE-68): a new route is attacked as soon as it exists, and CI fails when one does not withstand it.
+
 ## 2.21.0 — 2026-11-14
 
 ### Changed
