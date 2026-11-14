@@ -11,6 +11,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Zana\Http\Exception\UnauthorizedHttpException;
 use Zana\Http\ResponseFactory;
 use Zana\Mediator\MediatorInterface;
+use Zana\Routing\Attribute\PublicRoute;
 use Zana\Routing\Attribute\Route;
 use Zana\Security\Attribute\RateLimit;
 use Zana\Security\Middleware\RateLimitMiddleware;
@@ -22,6 +23,7 @@ use Zana\Security\Middleware\RateLimitMiddleware;
  * attempts a minute from one client. Send the token as
  * "Authorization: Bearer <token>".
  */
+#[PublicRoute(reason: 'Signing in: anyone may ask for a token with an e-mail address and a password')]
 final readonly class IssueTokenAction
 {
     public function __construct(

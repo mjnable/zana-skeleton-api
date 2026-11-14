@@ -3,6 +3,15 @@
 All Zana packages share one version number and are released together. A release that did
 not change this project is not listed.
 
+## 2.21.0 — Unreleased
+
+### Changed
+
+- `security.strict` is on (FE-68): the security rules of `check` are errors, so a route that does not say who may
+  reach it fails `check`, CI and `release:build`. The pages, and the token endpoint of the API, say why they are
+  public with `#[PublicRoute]`.
+- CI runs `composer audit`, and fails on a known vulnerability in a dependency.
+
 ## 2.20.0 — 2026-11-14
 
 ### Changed
