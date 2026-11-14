@@ -7,6 +7,8 @@ not change this project is not listed.
 
 ### Changed
 
+- `AGENTS.md` for Zana 2.21: every route says who may reach it.
+- Requires the Zana packages at ^2.21.
 - `security.strict` is on (FE-68): the security rules of `check` are errors, so a route that does not say who may
   reach it fails `check`, CI and `release:build`. The pages, and the token endpoint of the API, say why they are
   public with `#[PublicRoute]`.
