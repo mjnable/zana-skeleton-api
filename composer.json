@@ -11,22 +11,22 @@
     "require": {
         "php": "^8.5",
         "ext-pdo_sqlite": "*",
-        "mj-zana/cache": "^2.27",
-        "mj-zana/console": "^2.27",
-        "mj-zana/core": "^2.27",
-        "mj-zana/database": "^2.27",
-        "mj-zana/ddd": "^2.27",
-        "mj-zana/http": "^2.27",
-        "mj-zana/logging": "^2.27",
-        "mj-zana/mediator": "^2.27",
-        "mj-zana/routing": "^2.27",
-        "mj-zana/security": "^2.27",
-        "mj-zana/serialization": "^2.27",
-        "mj-zana/validation": "^2.27"
+        "mj-zana/cache": "^2.28",
+        "mj-zana/console": "^2.28",
+        "mj-zana/core": "^2.28",
+        "mj-zana/database": "^2.28",
+        "mj-zana/ddd": "^2.28",
+        "mj-zana/http": "^2.28",
+        "mj-zana/logging": "^2.28",
+        "mj-zana/mediator": "^2.28",
+        "mj-zana/routing": "^2.28",
+        "mj-zana/security": "^2.28",
+        "mj-zana/serialization": "^2.28",
+        "mj-zana/validation": "^2.28"
     },
     "require-dev": {
-        "mj-zana/maker": "^2.27",
-        "mj-zana/testing": "^2.27",
+        "mj-zana/maker": "^2.28",
+        "mj-zana/testing": "^2.28",
         "phpunit/phpunit": "^11.5"
     },
     "suggest": {
